@@ -4,7 +4,13 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  const token = req.session.token;
+
+  if (token === undefined) {
+    res.render('not-logged', { title: 'Netatmo Challenge' })
+  } else {
+    res.render('index', { title: 'Netatmo Challenge' });
+  }
 });
 
 export default router;

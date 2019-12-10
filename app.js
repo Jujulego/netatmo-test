@@ -1,3 +1,4 @@
+import cookieParser from 'cookie-parser';
 import createError from 'http-errors';
 import express from 'express';
 import session from 'express-session';
@@ -17,11 +18,11 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser('g38l5lt7lgq1dm2li7g6jw2gmnr0p3e2mmapfxw9'));
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'g38l5lt7lgq1dm2li7g6jw2gmnr0p3e2mmapfxw9',
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
+  saveUninitialized: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 

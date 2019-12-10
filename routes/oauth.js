@@ -41,10 +41,8 @@ router.get('/step2', async (req, res, next) => {
   };
 
   try {
-    const token = await oauth2.authorizationCode.getToken(options);
-    req.session.token = token;
-
-    res.status(200).json(token);
+    req.session.token = await oauth2.authorizationCode.getToken(options);
+    res.redirect('/');
   } catch (err) {
     console.error('Access token error', err);
     next(createError(500, 'Authentification failed !'));
