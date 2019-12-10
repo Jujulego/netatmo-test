@@ -5,6 +5,9 @@ import session from 'express-session';
 import logger from 'morgan';
 import path from 'path';
 
+import createSqliteStore from 'connect-sqlite3';
+const SqliteStore = createSqliteStore(session);
+
 import index_router from './routes/index';
 import oauth_router from './routes/oauth';
 
@@ -22,7 +25,8 @@ app.use(cookieParser('g38l5lt7lgq1dm2li7g6jw2gmnr0p3e2mmapfxw9'));
 app.use(session({
   secret: 'g38l5lt7lgq1dm2li7g6jw2gmnr0p3e2mmapfxw9',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new SqliteStore({ db: 'sessions.sqlite3' })
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
