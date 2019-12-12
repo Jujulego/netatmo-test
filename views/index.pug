@@ -1,15 +1,36 @@
 extends layout
 
 block content
-  h1= title
-  div
-    p= `Device: ${device}`
-    p= `Module: ${module}`
-    p= 'Temperature:'
-    p= `min = ${temperature.min}°C`
-    p= `moy = ${temperature.moy}°C`
-    p= `max = ${temperature.max}°C`
-    p= 'Humidity:'
-    p= `min = ${humidity.min}%`
-    p= `moy = ${humidity.moy}%`
-    p= `max = ${humidity.max}%`
+  div(class='container-fluid')
+    div(class='row')
+      div(class='col')
+        h1= title
+
+    div(class='row')
+      div(class='col')
+        p= `Device: ${device}`
+
+    div(class='row')
+      div(class='col')
+        p= `Module: ${module}`
+
+    div(class='row')
+      div(class='col')
+        h5 Statistics on the last week:
+
+    div(class='row')
+      div(class='col')
+        div(class='card-deck')
+          div(class='card')
+            div(class='card-header') Temperature:
+            ul(class='list-group list-group-flush')
+              li(class='list-group-item')= `min = ${temperature.min}°C`
+              li(class='list-group-item')= `moy = ${temperature.moy}°C`
+              li(class='list-group-item')= `max = ${temperature.max}°C`
+
+          div(class='card')
+            div(class='card-header') Humidity:
+            ul(class='list-group list-group-flush')
+              li(class='list-group-item')= `min = ${humidity.min}%`
+              li(class='list-group-item')= `moy = ${humidity.moy}%`
+              li(class='list-group-item')= `max = ${humidity.max}%`

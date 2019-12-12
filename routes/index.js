@@ -22,6 +22,7 @@ function compute_stats(data) {
     count++;
   });
 
+  moy = Math.round(moy * 100) / 100;
   return { min, max, moy };
 }
 
